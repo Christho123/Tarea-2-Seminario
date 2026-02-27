@@ -30,8 +30,9 @@ $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
         <div class="logo">EMPRESA</div>
         
         <nav class="menu">
+            <a href="dashboard.php" class="menu-item">Inicio</a>
             <a href="auditoria.php" class="menu-item">Auditoría</a>
-            <a href="rrhh.php" class="menu-item">Recursos Humanos (CRM)</a>
+            <a href="rrhh.php" class="menu-item">Recursos Humanos</a>
             <a href="analitica.php" class="menu-item">Analítica Web</a>
         </nav>
         
@@ -52,12 +53,7 @@ $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
         <div style="background:#e0e7ff;padding:20px;border-radius:10px;margin-top:20px;">
             <h3 style="color:#1e3a5f;margin-bottom:10px;">🔐 Sesión verificada con OTP</h3>
             <p style="color:#666;">Su acceso fue verificado mediante doble factor de autenticación.</p>
-        </div>
-
-        <div style="background:#fff;padding:20px;border-radius:10px;margin-top:15px;box-shadow:0 2px 10px rgba(0,0,0,0.05);">
-            <h3 style="color:#1e3a5f;margin-bottom:10px;">Tarea 1 + Tarea 2 (CRM)</h3>
-            <p style="color:#666;">Use el menú: <strong>Recursos Humanos</strong> para registrar empleados y <strong>Analítica Web</strong> para ver estadísticas de visitas.</p>
-        </div>        
+        </div>     
     </main>
 </body>
 </html>

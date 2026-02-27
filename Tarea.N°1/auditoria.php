@@ -29,8 +29,9 @@ $logs = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <aside class="sidebar">
         <div class="logo">EMPRESA</div>
         <nav class="menu">
+            <a href="dashboard.php" class="menu-item">Inicio</a>
             <a href="auditoria.php" class="menu-item activo">Auditoría</a>
-            <a href="rrhh.php" class="menu-item">Recursos Humanos (CRM)</a>
+            <a href="rrhh.php" class="menu-item">Recursos Humanos</a>
             <a href="analitica.php" class="menu-item">Analítica Web</a>
         </nav>
         <form action="logout.php" method="POST">
@@ -41,9 +42,6 @@ $logs = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <main class="contenido">
         <div class="contenedor-tabla">
             <h2>Registro de Auditoría</h2>
-            <div class="estado-conexion">
-                Servidor: localhost | Base de datos: Conectada ✓
-            </div>
             
             <table class="tabla-auditoria">
                 <thead>
