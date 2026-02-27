@@ -29,8 +29,9 @@ $logs = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <aside class="sidebar">
         <div class="logo">EMPRESA</div>
         <nav class="menu">
-            <a href="dashboard.php" class="menu-item">Inicio</a>
             <a href="auditoria.php" class="menu-item activo">Auditoría</a>
+            <a href="rrhh.php" class="menu-item">Recursos Humanos (CRM)</a>
+            <a href="analitica.php" class="menu-item">Analítica Web</a>
         </nav>
         <form action="logout.php" method="POST">
             <button type="submit" class="btn-logout">Cerrar Sesión</button>

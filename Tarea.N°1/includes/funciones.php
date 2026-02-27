@@ -16,4 +16,12 @@ function verificarIntentosFallidos($pdo, $email) {
     $stmt->execute(["%$email%"]);
     return $stmt->fetchColumn();
 }
+
+function registrarVisitaWeb($pdo, $pagina, $url = '', $user_id = null) {
+    $ip = $_SERVER['REMOTE_ADDR'] ?? '';
+    $user_agent = $_SERVER['HTTP_USER_AGENT'] ?? '';
+    $stmt = $pdo->prepare("INSERT INTO visitas_web (user_id, pagina, url, ip_address, user_agent) VALUES (?, ?, ?, ?, ?)");
+    $stmt->execute([$user_id, $pagina, $url, $ip, substr($user_agent, 0, 500)]);
+}
+
 ?>

@@ -1,7 +1,7 @@
 <?php
 $host = "localhost";
 $usuario = "root";
-$password = "";
+$password = "123456";
 $base_datos = "sistema_seguridad";
 
 try {
