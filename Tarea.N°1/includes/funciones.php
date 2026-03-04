@@ -17,11 +17,24 @@ function verificarIntentosFallidos($pdo, $email) {
     return $stmt->fetchColumn();
 }
 
-function registrarVisitaWeb($pdo, $pagina, $url = '', $user_id = null) {
-    $ip = $_SERVER['REMOTE_ADDR'] ?? '';
-    $user_agent = $_SERVER['HTTP_USER_AGENT'] ?? '';
-    $stmt = $pdo->prepare("INSERT INTO visitas_web (user_id, pagina, url, ip_address, user_agent) VALUES (?, ?, ?, ?, ?)");
-    $stmt->execute([$user_id, $pagina, $url, $ip, substr($user_agent, 0, 500)]);
+function obtenerIPReal() {
+    if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+        $ip = $_SERVER['HTTP_CLIENT_IP'];
+    } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+        // Captura la IP detrás de proxies o Cloudflare
+        $ips = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
+        $ip = trim($ips[0]);
+    } else {
+        $ip = $_SERVER['REMOTE_ADDR'];
+    }
+    return ($ip === '::1') ? '127.0.0.1' : $ip;
+}
+
+// Función de registro actualizada
+function registrarVisitaWeb($pdo, $pagina, $url, $user_id) {
+    $ip = obtenerIPReal();
+    $stmt = $pdo->prepare("INSERT INTO visitas_web (pagina, url, user_id, ip_address, created_at) VALUES (?, ?, ?, ?, NOW())");
+    $stmt->execute([$pagina, $url, $user_id, $ip]);
 }
 
 ?>
